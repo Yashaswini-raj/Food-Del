@@ -1,0 +1,45 @@
+.place-order{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 100px;
+    gap: 50px;
+    align-items: start;
+}
+.place-order-left{
+    width: 100%;
+    max-width: max(30%,500px);
+    
+}
+.place-order-left p{
+    font-size: 30px;
+    font-weight: 600;
+    color: black;
+    margin-bottom: 50px;
+}
+.place-order-left .multi-feilds{
+    display: flex;
+    gap: 10px;
+}
+.place-order-left input{
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 15px;
+    border: 1px solid #c9c9c9;
+    outline-color: tomato;
+
+}
+.place-order-right{
+    width: 100%;
+    max-width: max(40vw,500px);
+}
+.place-order .cart-total button{
+    margin-top: 30px;
+}
+.place-order .cart-total h2{
+    margin-bottom: 30px;
+    font-size: 30px;
+    font-weight: 600;
+    color: black;
+}
