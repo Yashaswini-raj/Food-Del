@@ -6,6 +6,10 @@ import { StoreContext } from "../../Context/StoreContext";
 const PlaceOrder = () => {
   const { getTotalCartAmount } = useContext(StoreContext);
   // const navigate=useNavigate()
+
+  const subtotal = getTotalCartAmount();
+  const deliveryFee = subtotal === 0 ? 0 : 20;
+  const totalPrice = subtotal + deliveryFee;
   return (
     <form className="place-order">
       <div className="place-order-left">
@@ -35,17 +39,20 @@ const PlaceOrder = () => {
           <div className="">
             <div className="cart-total-details">
               <p>Subtotal</p>
-              <p>${getTotalCartAmount()}</p>
+              {/* <p>${getTotalCartAmount()}</p> */}
+              <p>${subtotal}</p>
             </div>
             <hr />
             <div className="cart-total-details">
               <p>Delivery Fee</p>
-              <p>${getTotalCartAmount() === 0 ? 0 : 20}</p>
+              {/* <p>${getTotalCartAmount() === 0 ? 0 : 20}</p> */}
+              <p>${deliveryFee}</p>
             </div>
             <hr />
             <div className="cart-total-details">
               <b>Total</b>
-              <b>${getTotalCartAmount() === 0 ? 0 : +20}</b>
+              {/* <b>${getTotalCartAmount() === 0 ? 0 : +20}</b> */}
+              <b>${totalPrice}</b>
             </div>
           </div>
           <button>Proceed to payment</button>

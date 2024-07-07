@@ -9,6 +9,9 @@ const Cart = () => {
   // const [food_list]=useContext(StoreContext)
   const navigate = useNavigate();
   const { food_list, cartitem, removeCart, getTotalCartAmount, url } = useContext(StoreContext)
+  const subtotal = getTotalCartAmount();
+  const deliveryFee = subtotal === 0 ? 0 : 20;
+  const totalPrice = subtotal + deliveryFee;
   return (
     <div className='cart'>
       <div className="cart-items">
@@ -48,17 +51,20 @@ const Cart = () => {
           <div className="">
             <div className="cart-total-details">
               <p>Subtotal</p>
-              <p>${getTotalCartAmount()}</p>
+              {/* <p>${getTotalCartAmount()}</p> */}
+              <p>${subtotal}</p>
             </div>
             <hr />
             <div className="cart-total-details">
               <p>Delivery Fee</p>
-              <p>${getTotalCartAmount() === 0 ? 0 : 20}</p>
+              {/* <p>${getTotalCartAmount() === 0 ? 0 : 20}</p> */}
+              <p>${deliveryFee}</p>
             </div>
             <hr />
             <div className="cart-total-details">
               <b>Total</b>
-              <b>${getTotalCartAmount() === 0 ? 0 : +20}</b>
+              {/* <b>${getTotalCartAmount() === 0 ? 0 : +20}</b> */}
+              <b>${totalPrice}</b>
             </div>
           </div>
           <button onClick={() => navigate('/order')}>Proceed to Checkout</button>

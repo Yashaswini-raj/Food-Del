@@ -5,6 +5,7 @@ import foodRouter from "./routes/foodRouter.js"
 import userRouter from "./routes/userRouter.js"
 import 'dotenv/config'
 import cartRouter from "./routes/cartRouter.js"
+import orderRouter from "./routes/orderRouter.js"
 //app config
 
 const app=express()
@@ -22,14 +23,14 @@ app.use("/api/food",foodRouter)
 app.use("/images",express.static('uploads'))
 app.use("/api/user",userRouter)
 app.use("/api/cart",cartRouter)
-
+app.use("/api/order",orderRouter)
 
 app.get('/',(req,res)=>{
     res.send("API working")
 })
 
 app.listen(PORT,()=>{
-    console.log(`server started on ${PORT}`)
+    console.log(`server started on ${PORT}`);
 })
 
 //mongodb+srv://yashaswiniraj:<password>@cluster0.owhytft.mongodb.net/?
