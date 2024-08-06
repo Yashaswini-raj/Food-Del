@@ -11,8 +11,10 @@ dotenv.config();
 
 paypal.configure({
     "mode":'sandbox',
-    "client_id": "Aa7jSrvqxFhZFicIeNsaQWijhWZlnNxG8xkT44FlJHgGDkzV7ssBPfuXTGaV-h4QxcO2IG8dTqTgiszA",
-    "client_secret": 'EBtmO-_mNJ6oalDNF9Hc2WkyQC4PVVMlICfdPYKIzpyUXzwjX1DzmILyPbfnqEFdIjJgKNz8-eBejkZj',
+    "client_id": process.env.PAYPAL_CLIENT_ID,
+    "client_secret": process.env.PAYPAL_CLIENT_SECRET,
+    // "client_id": "Aa7jSrvqxFhZFicIeNsaQWijhWZlnNxG8xkT44FlJHgGDkzV7ssBPfuXTGaV-h4QxcO2IG8dTqTgiszA",
+    // "client_secret": 'EBtmO-_mNJ6oalDNF9Hc2WkyQC4PVVMlICfdPYKIzpyUXzwjX1DzmILyPbfnqEFdIjJgKNz8-eBejkZj',
 });
 
 
@@ -92,7 +94,7 @@ const verifyOrder=async (req,res)=>{
     
         const {orderId,success}=req.body;
         try {
-            if(success=="true"){
+            if(success==="true"){
                 await orderModel.findByIdAndUpdate(orderId,{payment:true})
                 res.json({success:true,message:"paid"})
             }
@@ -109,7 +111,7 @@ const verifyOrder=async (req,res)=>{
 
 const userOrder=async(req,res)=>{
     try {
-        const orders=await orderModel.find({userId:req.body.userId});
+        const orders=await orderModel.find({userId:req.body.userId,payment:true});
         res.json({success:true,data:orders,message:"success"})
     } catch (error) {
         console.log(error)
@@ -118,7 +120,7 @@ const userOrder=async(req,res)=>{
 }
 const listOrders=async(req,res)=>{
     try {
-        const orders=await orderModel.find({})
+        const orders=await orderModel.find({payment:true})
         res.json({success:true,data:orders})
     } catch (error) {
         console.log(error)
