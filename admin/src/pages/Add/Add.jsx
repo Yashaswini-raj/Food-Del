@@ -43,7 +43,7 @@ const Add = ({url}) => {
         }
     }catch(error){
         console.log(error)
-    }
+    }    
     }
    
   return (
@@ -91,6 +91,7 @@ const Add = ({url}) => {
     </div>
   )
 }
+
 Add.propTypes = {
     url: PropTypes.string.isRequired, // Validate 'url' prop as a required string
   };

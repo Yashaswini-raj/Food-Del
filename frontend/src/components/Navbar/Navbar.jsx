@@ -28,7 +28,7 @@ const Navbar = ({setshowlogin}) => {
             </ul>
 
             <div className="navbar-right">
-                <img src={assets.search_icon} alt="" />
+               
 
                 <div className="navbar-search-icon">
                    <Link to='/cart'><img src={assets.basket_icon} alt="" /></Link> 
@@ -39,15 +39,12 @@ const Navbar = ({setshowlogin}) => {
                 :<div className="navbar-profile">
                     <img src={assets.profile_icon} alt="" />
                     <ul className='nav-profile-dropdown'>
-                        <li><img src={assets.bag_icon} alt="" /><p>Orders</p></li>
+                        <li onClick={()=>navigate('/myorders')}><img src={assets.bag_icon} alt="" /><p>Orders</p></li>
                         <hr />
                         <li onClick={logout}><img src={assets.logout_icon} alt="" /><p>Logout</p></li>
                     </ul>
                 </div>
-
                 }
-                
-
             </div>
         </div>
     )
